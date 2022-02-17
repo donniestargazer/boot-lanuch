@@ -4,23 +4,25 @@ import com.zimug.boot.lanuch.AjaxResponse;
 import com.zimug.boot.lanuch.model.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
 @Slf4j
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/rest")
 public class ArticleController {
 
     //查詢一篇文章，根據id
     //@RequestMapping(value = "/articles/{id}", method = RequestMethod.GET)
     @GetMapping("/articles/{id}")
-    public AjaxResponse getArticle(@PathVariable("id") Long id){
+    public @ResponseBody AjaxResponse getArticle(@PathVariable("id") Long id){
 
         Article article = Article.builder()
                 .id(1L)
-                .author("殷振祐")
+                .author("kevinstargazer")
                 .content("spring boot 從青銅到王者")
                 .createTime(new Date())
                 .title("t1").build();
@@ -33,7 +35,7 @@ public class ArticleController {
     //新增一篇文章
     //@RequestMapping(value = "/articles", method = RequestMethod.POST)
     @PostMapping(value = "/articles")
-    public AjaxResponse saveArticle(@RequestBody Article article,
+    public @ResponseBody AjaxResponse saveArticle(@RequestBody Article article,
                                     @RequestHeader String aaa){
 
         log.info("saveArticle:" + article);
@@ -56,7 +58,7 @@ public class ArticleController {
     //修改一篇文章
     //@RequestMapping(value = "/articles", method = RequestMethod.PUT)
     @PutMapping("/articles")
-    public AjaxResponse updateArticle(@RequestBody Article article){
+    public @ResponseBody AjaxResponse updateArticle(@RequestBody Article article){
 
         if(article.getId() == null)
         {
@@ -70,7 +72,7 @@ public class ArticleController {
     //刪除一篇文章，根據id
     //@RequestMapping(value = "/articles/{id}", method = RequestMethod.DELETE)
     @DeleteMapping("/articles/{id}")
-    public AjaxResponse deleteArticle(@PathVariable("id") Long id){
+    public @ResponseBody AjaxResponse deleteArticle(@PathVariable("id") Long id){
 
         log.info("deleteArticle:" + id);
 

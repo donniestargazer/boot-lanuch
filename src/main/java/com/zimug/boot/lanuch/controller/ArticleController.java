@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 @Slf4j
@@ -35,12 +36,11 @@ public class ArticleController {
     //新增一篇文章
     //@RequestMapping(value = "/articles", method = RequestMethod.POST)
     @PostMapping(value = "/articles")
-    public @ResponseBody AjaxResponse saveArticle(@RequestBody Article article,
-                                    @RequestHeader String aaa){
+    public @ResponseBody AjaxResponse saveArticle(@Valid @RequestBody Article article){
 
         log.info("saveArticle:" + article);
 
-        return AjaxResponse.success();
+        return AjaxResponse.success(article);
     }
 
     /*@PostMapping(value = "/articles")

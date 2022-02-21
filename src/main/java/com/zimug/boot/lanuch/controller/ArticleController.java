@@ -2,11 +2,13 @@ package com.zimug.boot.lanuch.controller;
 
 import com.zimug.boot.lanuch.AjaxResponse;
 import com.zimug.boot.lanuch.model.Article;
+import com.zimug.boot.lanuch.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
 @Slf4j
@@ -14,6 +16,9 @@ import java.util.Date;
 @Controller
 @RequestMapping("/rest")
 public class ArticleController {
+
+    @Resource
+    ArticleService articleService;
 
     //查詢一篇文章，根據id
     //@RequestMapping(value = "/articles/{id}", method = RequestMethod.GET)

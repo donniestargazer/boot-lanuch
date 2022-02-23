@@ -44,7 +44,7 @@ public class ArticleController {
 
         log.info("saveArticle:" + article);
 
-        return AjaxResponse.success(article);
+        return AjaxResponse.success(articleService.saveArticle(article));
     }
 
     /*@PostMapping(value = "/articles")

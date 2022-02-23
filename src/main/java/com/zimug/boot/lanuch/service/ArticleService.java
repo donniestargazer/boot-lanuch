@@ -1,8 +1,8 @@
 package com.zimug.boot.lanuch.service;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class ArticleService {
+import com.zimug.boot.lanuch.model.Article;
 
+public interface ArticleService {
+    String saveArticle(Article article);
 }

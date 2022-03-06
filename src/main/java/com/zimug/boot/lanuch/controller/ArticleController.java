@@ -17,8 +17,10 @@ import java.util.Date;
 @RequestMapping("/rest")
 public class ArticleController {
 
-    @Resource
-    ArticleService articleService;
+    //@Resource
+    //ArticleService articleService;
+    //2 5 使用swagger建構API接口文檔
+    //由於目前無力處理需要加入 articleService 的問題，註解掉
 
     //查詢一篇文章，根據id
     //@RequestMapping(value = "/articles/{id}", method = RequestMethod.GET)
@@ -44,7 +46,10 @@ public class ArticleController {
 
         log.info("saveArticle:" + article);
 
-        return AjaxResponse.success(articleService.saveArticle(article));
+        //return AjaxResponse.success(articleService.saveArticle(article));
+        //2 5 使用swagger建構API接口文檔
+        //由於目前無力處理需要加入 articleService 的問題，註解掉
+        return AjaxResponse.success();
     }
 
     /*@PostMapping(value = "/articles")

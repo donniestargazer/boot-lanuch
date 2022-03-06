@@ -2,6 +2,31 @@
 Spring Boot 從青銅到王者系列 本人而非字母哥實做內容  
 [播放清單](https://www.youtube.com/playlist?list=PLPeEs8-8l_L8VvpXKLOscgyDOaXKaPnVf)
 
+#2022/03/06 中午
+至 2 5 使用swagger建構API接口文檔
+
+###2 5 使用swagger建構API接口文檔
+controller/ArticleController.java:20,49  
+由於目前無力處理需要加入 articleService 的問題，註解掉
+
+pom.xml  
+移除 springfox-swagger2 與 springfox-swagger-ui  
+加入 springfox-boot-starter 
+
+config/SwaggerConfig.java  
+移除 EnableSwagger2
+
+網址改用：http://localhost:26901/swagger-ui/index.html#/
+
+config/SwaggerConfig.java:36  
+.paths 不需要在 regex 前接 PathSelectors
+
+model/Article.java:22  
+於 Date 資料前加入日期格式，或許能解決之前幾個版本日期格式的問題，將於之後的版本進行驗證  
+`@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")`  
+詳情可見：https://stackoverflow.com/questions/43622259/how-to-use-spring-boots-spring-jackson-date-format-property
+
+
 #2022/02/21 
 至 2 4 2 servlet容器環境下的測試
 
